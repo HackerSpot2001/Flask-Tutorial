@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block content %}    
+<div class="container my-3">
+    <form action="/" method="post">
+        <h1>Add a Todo</h1>
+        <div class="mb-3">
+            <label for="todo_title" class="form-label">Title</label>
+            <input type="text" class="form-control"  id="todo_title" name="title">
+        </div>
+        <div class="mb-3">
+            <div class="form-floating">
+                <textarea class="form-control" name="content" placeholder="Leave a comment here" id="todo_desc"
+                style="height: 100px"></textarea>
+                <label for="todo_desc">Content</label>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+<div class="container my-4">
+    <h1>Your To-Do</h1>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">S No.</th>
+            <th scope="col">Title</th>
+            <th scope="col">Content</th>
+            <th scope="col">Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for todo in alltodo %}
+          <tr>
+            <th scope="row">{{loop.index}}</th>
+            <td>{{todo.title}}</td>
+            <td>{{todo.content}}</td>
+            <td>{{todo.date_created}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+</div>
+
+{% endblock content %}
